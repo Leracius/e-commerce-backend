@@ -1,6 +1,7 @@
 import express, { Express } from 'express'
 import cors from 'cors'
 import authRoutes from '../routes/auth'
+import homeRoutes from '../routes/home'
 import { dbconection } from '../database/config'
 
 export class Server {
@@ -21,7 +22,6 @@ export class Server {
 
     async connectDB(): Promise<void>{
         console.log('base conectada');
-        
         await dbconection()
     }
 
@@ -31,6 +31,7 @@ export class Server {
     }
 
     routes(): void {
+        this.app.use("/", homeRoutes)
         this.app.use(this.authPath, authRoutes)    
     }
 
