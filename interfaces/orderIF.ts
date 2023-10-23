@@ -8,11 +8,12 @@ interface ShippingDetails{
 };
 
 interface IItems {
-    desc: String,
+    category: String,
     id: Number,
+    img: String,
+    name: String,
     price: Number, 
     quantity: Number,
-    title: String
 };
 
 export interface OrderInterface {
