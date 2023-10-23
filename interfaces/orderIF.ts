@@ -48,7 +48,20 @@ const OrderSchema = new Schema<OrderInterface>({
     },
     items: {
         type: [{
-            desc: {
+            // category: String,
+            // id: Number,
+            // img: String,
+            // name: String,
+            // price: Number, 
+            // quantity: Number,
+            category: {
+                type: String,
+                required: true,
+            },
+            img: {
+                type: String,
+            },
+            name: {
                 type: String,
                 required: true,
             },
@@ -62,10 +75,6 @@ const OrderSchema = new Schema<OrderInterface>({
             },
             quantity: {
                 type: Number,
-                required: true,
-            },
-            title: {
-                type: String,
                 required: true,
             },
         }],
