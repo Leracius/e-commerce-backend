@@ -6,13 +6,13 @@ import jwt from "jsonwebtoken"
 export const genJwt = (id: string = ""): Promise<string> =>{
     return new Promise((res, rej)=>{
         const payload = {id}
-
+        const expiresIn =  4 * 24 * 60 * 60;
 
         jwt.sign(
             payload,
             process.env.SECRET_PASS as string,
             {
-                expiresIn: "4h"
+                expiresIn
             },
             (err: Error | null, token: string | undefined)=>{
                 if(err){

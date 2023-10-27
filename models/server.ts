@@ -2,6 +2,7 @@ import express, { Express } from 'express'
 import cors from 'cors'
 import authRoutes from '../routes/auth'
 import homeRoutes from '../routes/home'
+import productRoutes from '../routes/product'
 import ordersRoutes from '../routes/orders'
 import { dbconection } from '../database/config'
 
@@ -9,6 +10,7 @@ export class Server {
 
     authPath: string
     orderPath: string
+    productPath: string
     app: Express
     port: string | number | undefined
 
@@ -17,6 +19,7 @@ export class Server {
         this.port = process.env.PORT
         this.authPath= '/auth'
         this.orderPath= '/orders'
+        this.productPath= '/products'
         
         this.connectDB()
         this.middlewares()
@@ -36,7 +39,8 @@ export class Server {
     routes(): void {
         this.app.use("/", homeRoutes)
         this.app.use(this.authPath, authRoutes)
-        this.app.use(this.orderPath, ordersRoutes)    
+        this.app.use(this.orderPath, ordersRoutes)  
+        this.app.use(this.productPath, productRoutes)  
     }
 
     listen(): void {
